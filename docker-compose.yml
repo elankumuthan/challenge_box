@@ -1,0 +1,11 @@
+version: '3'
+services:
+  ctf_web:
+    build: .
+    container_name: challenge_box
+    ports:
+      - "5000:80"
+    restart: unless-stopped
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development

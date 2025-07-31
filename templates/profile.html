@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ username }}'s Profile</title>
+    <style>
+        body {
+            background-color: #101010;
+            color: #eee;
+            font-family: monospace;
+            padding: 40px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+            width: 300px;
+            background: #222;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 4px;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 8px;
+            background: #1a1a1a;
+            border-left: 4px solid #0f0;
+        }
+    </style>
+</head>
+<body>
+    <h2>👤 Welcome, {{ username }}</h2>
+    <form method="POST">
+        <input name="message" placeholder="Post something (XSS maybe?)">
+        <button type="submit">Post</button>
+    </form>
+
+    <h3>🧾 Your Messages:</h3>
+    {% for msg in messages %}
+        <div class="message">{{ msg[0]|safe }}</div>
+    {% endfor %}
+</body>
+</html>
